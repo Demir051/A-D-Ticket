@@ -40,15 +40,48 @@ app.use(expressSession({
 }));
 
 // User modeli
-const Users = require("./models/users");
+const User = require("./models/user");
+const Ticket = require("./models/ticket");
+const Route = require("./models/route");
+const Bus = require("./models/bus");
+const Reservation = require("./models/reservation");
+
+
+//Relation
+Bus.hasMany(Route, {as: 'Routes'});
+
+Route.belongsTo(Bus);
+
+Ticket.belongsTo(Route);
+
+Reservation.belongsTo(User);
+
+User.hasMany(Reservation, {
+    as: 'Reservations'
+});
+
+Reservation.hasMany(Ticket, {
+    as: 'Tickets'
+});
+
+Ticket.belongsTo(Reservation);
+
 
 // User rotaları
 const userRoutes = require("./routes/user");
 app.use("/", userRoutes);
 
+const dummyDataRoutes = require('./routes/dummyData');
+app.use('/dummy', dummyDataRoutes);
+
 // Statik dosyaların sunumu
 app.use("/libs", express.static(path.join(__dirname, "node_modules")));
 app.use("/static", express.static(path.join(__dirname, "public")));
+
+//remove database
+// (async () => {
+//     await sequelize.sync({force : true});
+// })()
 
 // Uygulamayı dinle
 app.listen(PORT, () => {
