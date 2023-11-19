@@ -8,18 +8,24 @@ body
     .row
       .col-md-8.mx-auto.text-center
         if message
-            .alert.alert-danger(role='alert')
-              = message
+          .alert(class=`alert-${alert}` , role='alert')
+            = message
         h2 Filtrele
         form(method="post")
          select.form-select.mb-3(name="kalkis")
           option(value='default') Kalkış Yeri
-          each departure in departureCitys
-            option(value=departure) #{departure}
+          - if (departureCitys && departureCitys.length > 0)
+            each departure in departureCitys
+              option(value=departure) #{departure}
+          - else
+              option(value='not_found') Kalkış Yeri Bulunamadı
          select.form-select.mb-3(name="varis")
           option(value='default') Varış Yeri
-          each arrival in arrivalCitys
-            option(value=arrival) #{arrival}
+          - if (arrivalCitys && arrivalCitys.length > 0)
+            each arrival in arrivalCitys
+              option(value=arrival) #{arrival}
+          - else
+              option(value='not_found') Kalkış Yeri Bulunamadı 
           input.form-control.mb-3(type="date" name="tarih" id="tarih")
           button.btn.btn-secondary(type="submit") Filtrele  
 

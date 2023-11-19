@@ -292,8 +292,7 @@ router.get('/createDummyData', async (req, res) => {
 
 
         // Otobüs oluştur
-        const bus = await Bus.bulkCreate([
-        {
+        const bus = await Bus.bulkCreate([{
             plateNumber: 'ABC123',
             capacity: 50
         }, {
@@ -323,11 +322,10 @@ router.get('/createDummyData', async (req, res) => {
         }, {
             plateNumber: 'BCD890',
             capacity: 58
-        } ]);
+        }]);
 
         // Rota oluştur
-        const route = await Route.bulkCreate([
-        {
+        const route = await Route.bulkCreate([{
             name: 'Route 1',
             departureCity: 'Istanbul',
             arrivalCity: 'Ankara',
@@ -397,11 +395,10 @@ router.get('/createDummyData', async (req, res) => {
             distance: 600,
             departureDate: new Date(2023, 0, 10, 17, 30),
             BusId: bus.id,
-        } ]);
+        }]);
 
         // Kullanıcı oluştur
-        const user = await User.bulkCreate([
-        {
+        const user = await User.bulkCreate([{
             username: 'user1',
             password: 'pass123',
             email: 'user1@example.com',
@@ -441,11 +438,10 @@ router.get('/createDummyData', async (req, res) => {
             username: 'user10',
             password: 'passtu',
             email: 'user10@example.com',
-        } ]);
+        }]);
 
         // Rezervasyon oluştur
-        const reservation = await Reservation.bulkCreate([
-        {
+        const reservation = await Reservation.bulkCreate([{
             date: new Date(),
             UserId: user.id,
         }, {
@@ -475,11 +471,10 @@ router.get('/createDummyData', async (req, res) => {
         }, {
             date: new Date(),
             UserId: user.id,
-        } ]);
+        }]);
 
         // Bilet oluştur
-        const ticket = await Ticket.bulkCreate([
-        {
+        const ticket = await Ticket.bulkCreate([{
             seatNumber: 10,
             price: 50.0,
             RouteId: route.id, // Rota ile ilişkilendir
@@ -529,7 +524,7 @@ router.get('/createDummyData', async (req, res) => {
             price: 53.0,
             RouteId: route.id,
             ReservationId: reservation.id,
-        } ]);
+        }]);
 
         res.status(201).json({
             message: 'Dummy data created successfully'

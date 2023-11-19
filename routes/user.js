@@ -5,9 +5,9 @@ const userController = require("../controllers/user");
 
 router.get("/ticket/:id", userController.ticket_params_get);
 
-router.get("/tickets" , userController.tickets_get)
+router.get("/tickets", userController.tickets_get)
 
-router.get("/about" , userController.about_get);
+router.get("/about", userController.about_get);
 
 router.get("/", userController.index_get);
 

@@ -48,7 +48,9 @@ const Reservation = require("./models/reservation");
 
 
 //Relation
-Bus.hasMany(Route, {as: 'Routes'});
+Bus.hasMany(Route, {
+    as: 'Routes'
+});
 
 Route.belongsTo(Bus);
 
