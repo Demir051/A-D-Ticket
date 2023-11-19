@@ -18,6 +18,10 @@ const Route = sequelize.define('Route', {
         type: DataTypes.FLOAT,
         allowNull: false,
     },
+    departureDate: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
 });
 
 module.exports = Route;

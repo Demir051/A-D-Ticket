@@ -7,19 +7,20 @@ body
   .container.mt-4.text-center
     .row
       .col-md-8.mx-auto.text-center
+        if message
+            .alert.alert-danger(role='alert')
+              = message
         h2 Filtrele
         form(method="post")
-          select.form-select.mb-3(name="kalkis")
-            option(value='default') Kalkış Yeri
-            option(value='istanbul') İstanbul
-            option(value='ankara') Ankara
-            option(value='izmir') İzmir
-          select.form-select.mb-3(name="varis")
-            option(value='default') Varış Yeri
-            option(value='istanbul') İstanbul
-            option(value='ankara') Ankara
-            option(value='izmir') İzmir
-            input.form-control.mb-3(type="date" name="tarih" id="tarih")
+         select.form-select.mb-3(name="kalkis")
+          option(value='default') Kalkış Yeri
+          each departure in departureCitys
+            option(value=departure) #{departure}
+         select.form-select.mb-3(name="varis")
+          option(value='default') Varış Yeri
+          each arrival in arrivalCitys
+            option(value=arrival) #{arrival}
+          input.form-control.mb-3(type="date" name="tarih" id="tarih")
           button.btn.btn-secondary(type="submit") Filtrele  
 
 

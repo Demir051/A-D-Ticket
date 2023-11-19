@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+
+    include ../partials/head
+
+
+    body
+        include ../partials/navbar
+
+        block content
+            .container
+                .row
+                    .col-md-8.offset-md-2
+                    h2.text-center A&D Ticket Hakkında
+                    p.text-justify
+                        | A&D Ticket, etkinliklere kolay ve güvenilir bir şekilde bilet satın almanızı sağlayan bir platformdur.
+                        | Sunduğumuz geniş etkinlik yelpazesi ile herkesin ilgisini çekecek bir şey bulmasını sağlıyoruz.
+                    h3.text-center Misyonumuz
+                    p.text-justify
+                        | Müşterilerimize en iyi deneyimi sunmak için, etkinliklere erişimi kolaylaştırarak ve
+                        | güvenli bir ortamda bilet satın alma işlemlerini gerçekleştirerek etkinlik dünyasını demokratikleştiriyoruz.
+                    h3.text-center Neden A&D Ticket?
+                    ul
+                      li Basit ve Kullanıcı Dostu Arayüz
+                      li Güvenilir ve Hızlı Bilet Satın Alma İşlemi
+                      li Geniş Etkinlik Yelpazesi
+                      li Müşteri Desteği
+                    h3.text-center İletişim
+                    p.text-justify
+                        | Bizimle iletişime geçmek için aşağıdaki bilgileri kullanabilirsiniz:
+                    address.text-center
+                        | A&D Ticket
+                        br
+                        | 123 Bilet Caddesi, Etkinlik Şehri
+                        br
+                        | Telefon: (555) 123-4567
+                        br
+                        | Email: info@adticket.com
+
+        include ../partials/footer

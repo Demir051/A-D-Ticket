@@ -79,11 +79,12 @@ app.use("/libs", express.static(path.join(__dirname, "node_modules")));
 app.use("/static", express.static(path.join(__dirname, "public")));
 
 //remove database
+
 // (async () => {
 //     await sequelize.sync({force : true});
 // })()
 
 // Uygulamayı dinle
 app.listen(PORT, () => {
-    console.log(`App started on http://localhost:${PORT}`);
+    console.log(`App started`);
 });
