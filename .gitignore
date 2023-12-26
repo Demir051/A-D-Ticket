@@ -1,24 +1,3 @@
-#images folder
-public/images/*
-
-#videos
-*.mp4
-
-#images
-*.png
-*.jpg
-*.jpeg
-*.gif
-
-#log
-*.log
-
-#node
-node_modules/
-
-#.env
 .env
 
-#IDE
-.vscode/
-.idea/
+node_modules

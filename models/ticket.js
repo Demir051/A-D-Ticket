@@ -1,17 +1,28 @@
-const {
-    DataTypes
-} = require('sequelize');
-const sequelize = require('../data/db');
+const mongoose = require('mongoose');
 
-const Ticket = sequelize.define('Ticket', {
-    seatNumber: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+const ticketSchema = new mongoose.Schema({
+    departure: {
+        type: String,
+        required: true
+    },
+    destination: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        required: true
+    },
+    passengerCount: {
+        type: Number,
+        required: true
     },
     price: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
+        type: Number,
+        required: true
     },
 });
+
+const Ticket = mongoose.model('Ticket', ticketSchema);
 
 module.exports = Ticket;
