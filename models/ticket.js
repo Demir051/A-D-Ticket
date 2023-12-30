@@ -21,6 +21,10 @@ const ticketSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    companyName:{
+        type: String,
+        required: true
+    },
 });
 
 const Ticket = mongoose.model('Ticket', ticketSchema);

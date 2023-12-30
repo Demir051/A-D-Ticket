@@ -5,7 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const bodyParser = require('body-parser'); // Add body-parser
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+const session = require('express-session'); // Add body-parser
 
 const app = express();
 dotenv.config();
@@ -33,13 +37,22 @@ app.use(bodyParser.urlencoded({
 })); // Use body-parser for URL-encoded data
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Separate route handling
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const adminRouter = require('./routes/admin');
 
 app.use('/', indexRouter);
 app.use(authRouter);
+app.use('/adminpanel', adminRouter);
 
 // 404 handler
 app.use(function (req, res, next) {
