@@ -11,7 +11,7 @@ exports.contact_get = async (req, res, next) => {
 }
 
 exports.error_get = async (req, res, next) => {
-    res.render("404",{
+    res.render("error",{
         title: "Error Page"
     });
 }

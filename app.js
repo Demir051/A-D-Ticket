@@ -9,7 +9,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-const session = require('express-session'); // Add body-parser
+const session = require('express-session');
+const formatDateMiddleware = require('./middlewares/formatDate');
 
 const app = express();
 dotenv.config();
@@ -54,28 +55,30 @@ app.use('/', indexRouter);
 app.use(authRouter);
 app.use('/adminpanel', adminRouter);
 
+app.use(formatDateMiddleware);
+
 // 404 handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // Error handler
-app.use(function (err, req, res, next) {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// app.use(function (err, req, res, next) {
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  res.status(err.status || 500);
+//   res.status(err.status || 500);
 
-  // Send structured JSON response for API requests
-  if (req.originalUrl.startsWith('/api/')) {
-    res.json({
-      error: err.message
-    });
-    return;
-  }
+//   // Send structured JSON response for API requests
+//   if (req.originalUrl.startsWith('/api/')) {
+//     res.json({
+//       error: err.message
+//     });
+//     return;
+//   }
 
-  // Render error page for non-API requests
-  res.render('error');
-});
+//   // Render error page for non-API requests
+//   res.render('error');
+// });
 
 module.exports = app;

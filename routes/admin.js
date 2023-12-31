@@ -4,8 +4,14 @@ const router = express.Router();
 
 const adminController = require("../controllers/admin");
 
-router.get("/", adminController.admin_get)
+const formatDateMiddleware = require("../middlewares/formatDate");
+
+router.get("/", adminController.admin_get);
+
+router.get("/tickets" , formatDateMiddleware , adminController.tickets_get);
 
 router.get("/add-ticket", adminController.add_ticket_get);
+
+router.post("/add-ticket", adminController.add_ticket_post);
 
 module.exports = router;
