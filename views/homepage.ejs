@@ -12,21 +12,30 @@
     <div class="mx-auto mt-8">
         <!-- Bilet Alma Formu -->
         <div class="w-1/2 mx-auto p-4 rounded">
-            <form action="/bilet-al" method="post">
+            
+            <form method="post">
                 <!-- Kalkış -->
                 <div class="mb-4">
-                    <label for="kalkis" class="block text-gray-700 font-semibold">Kalkış</label>
-                    <input type="text" id="kalkis" name="kalkis" class="w-full p-2 border border-gray-300 rounded mt-1">
+                    <label for="departure" class="block text-gray-700 font-semibold">Kalkış</label>
+                    <select class="block w-full p-2 border border-gray-300 rounded mt-1" id="departure" name="departure">
+                        <% tickets.forEach(ticket => { %>
+                            <option value="<%= ticket.departure %>"><%= ticket.departure %></option>
+                        <% }) %>
+                    </select>
                 </div>
                 <!-- Varış -->
                 <div class="mb-4">
-                    <label for="varis" class="block text-gray-700 font-semibold">Varış</label>
-                    <input type="text" id="varis" name="varis" class="w-full p-2 border border-gray-300 rounded mt-1">
+                    <label for="destination" class="block text-gray-700 font-semibold">Varış</label>
+                    <select class="block w-full p-2 border border-gray-300 rounded mt-1" id="destination" name="destination">
+                        <% tickets.forEach(ticket => { %>
+                        <option value="<%= ticket.destination %>"><%= ticket.destination %></option>
+                        <% }) %>
+                    </select>
                 </div>
                 <!-- Tarih -->
                 <div class="mb-4">
                     <label for="tarih" class="block text-gray-700 font-semibold">Tarih</label>
-                    <input type="date" id="tarih" name="tarih" class="w-full p-2 border border-gray-300 rounded mt-1">
+                    <input type="date" id="date" name="date" class="w-full p-2 border border-gray-300 rounded mt-1">
                 </div>
                 <!-- Gönder Butonu -->
                 <div>

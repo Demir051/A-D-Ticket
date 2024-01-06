@@ -4,7 +4,15 @@ const router = express.Router();
 
 const indexController = require("../controllers/index");
 
-router.get("/", indexController.index_get)
+const formatDateMiddleware = require("../middlewares/formatDate");
+
+const fullFormatDateMiddleware = require("../middlewares/formatFullDate");
+
+router.get("/",indexController.index_get)
+
+router.post("/",formatDateMiddleware ,indexController.index_post)
+
+router.get("/tickets", fullFormatDateMiddleware, indexController.tickets_get)
 
 router.get("/contact", indexController.contact_get)
 

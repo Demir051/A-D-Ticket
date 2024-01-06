@@ -4,7 +4,7 @@ const router = express.Router();
 
 const adminController = require("../controllers/admin");
 
-const formatDateMiddleware = require("../middlewares/formatDate");
+const formatDateMiddleware = require("../middlewares/formatFullDate");
 
 router.get("/", adminController.admin_get);
 

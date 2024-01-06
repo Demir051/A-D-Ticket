@@ -1,9 +1,11 @@
-function formatDateMiddleware(req, res, next) {
+function fullformatDateMiddleware(req, res, next) {
     res.locals.formatDate = function (dateString) {
         const options = {
             year: 'numeric',
             month: 'numeric',
-            day: 'numeric'
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric'
         };
         return new Date(dateString).toLocaleDateString('en-US', options);
     };
@@ -11,4 +13,4 @@ function formatDateMiddleware(req, res, next) {
     next();
 }
 
-module.exports = formatDateMiddleware;
+module.exports = fullformatDateMiddleware;

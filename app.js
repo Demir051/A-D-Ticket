@@ -11,6 +11,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const formatDateMiddleware = require('./middlewares/formatDate');
+const fullFormatDateMiddleware = require('./middlewares/formatFullDate');
 
 const app = express();
 dotenv.config();
@@ -56,6 +57,7 @@ app.use(authRouter);
 app.use('/adminpanel', adminRouter);
 
 app.use(formatDateMiddleware);
+app.use(fullFormatDateMiddleware);
 
 // 404 handler
 app.use(function (req, res, next) {
